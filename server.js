@@ -38,8 +38,8 @@ app.get("/api/:lifeNum", (req, res) => {
     res.json(lifePaths["unknown"]);
   }
 });
-
-app.listen(PORT, function () {
+//process.env.PORT allows heroku the option to use their own selected port
+app.listen(process.env.PORT || PORT, function () {
   console.log(`The Server Is Running On Port ${PORT}!`);
 });
 console.log("is this working");
