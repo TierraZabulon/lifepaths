@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 app.get("/api/:lifeNum", (req, res) => {
   // const lifeNums =
   const paths = req.params.lifeNum; //assigning a varible for req
-  res.json(lifePaths); //responding with the data as with json- this is pulling from the object that was created
+  res.json(lifePaths[paths]); //responding with the data as with json- this is pulling from the object that was created
   //if we were checking for a name that had spaces dot notation would not work would have to use brackets
 
   //this is checking for whatever is passed in is a property of lifePaths, if it is inside of object respond with result
@@ -37,7 +37,8 @@ app.get("/api/:lifeNum", (req, res) => {
   if (lifePaths[paths]) {
     res.json(lifePaths[paths].info);
   } else {
-    res.json(lifePaths["unknown"]);
+    console.log("error");
+    // res.json(lifePaths[unknown]);
   }
 });
 //process.env.PORT allows heroku the option to use their own selected port
