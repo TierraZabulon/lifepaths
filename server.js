@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { request } = require("express");
-const { path } = require("express/lib/application");
 const PORT = 8000;
 
 app.use(cors());
@@ -14,6 +12,10 @@ const lifePaths = {
   2: {
     number: "2",
     info: "People that were born with a 2 Life Path are blessed with beautiful hearts that they use to bring beautiful relationships into their lives.",
+  },
+  unknown: {
+    number: "unkown",
+    info: "unknown.",
   },
 };
 
@@ -33,7 +35,7 @@ app.get("/api/:lifeNum", (req, res) => {
   //   console.log(lifePaths[paths].info);
 
   if (lifePaths[paths]) {
-    res.json(lifePaths[paths]);
+    res.json(lifePaths[paths].info);
   } else {
     res.json(lifePaths["unknown"]);
   }
